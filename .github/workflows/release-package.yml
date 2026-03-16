@@ -1,0 +1,19 @@
+name: Release Package
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Dummy Release
+        run: |
+          echo "Release Version 1.0.0" > release.txt
+          echo "Deployed by Vincent" >> release.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-file
+          path: release.txt
